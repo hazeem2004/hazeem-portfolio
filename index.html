@@ -41,14 +41,14 @@
   }
   .logo-mark{font-family:'Anton',sans-serif; font-size:1.1rem; letter-spacing:.08em;}
   .nav-links{display:flex; gap:2rem; list-style:none;}
-  .nav-links a{color:var(--bone); text-decoration:none; font-family:'Space Mono',monospace; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; opacity:.75; transition:opacity .3s var(--ease);}
+  .nav-links a{color:var(--bone); text-decoration:none; font-family:'Space Mono',monospace; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; opacity:.75; transition:opacity .3s var(--ease);} 
   .nav-links a:hover{opacity:1;}
   @media (max-width:720px){ .nav-links{display:none;} }
 
   /* ---------- hero ---------- */
   .hero{position:relative; height:100svh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:0 1.2rem; overflow:hidden;}
   .hero-noise{position:absolute; inset:0; opacity:.05; pointer-events:none; background-image:radial-gradient(circle at 1px 1px, var(--bone) 1px, transparent 0); background-size:3px 3px;}
-  .hero-glow{position:absolute; width:120vw; height:120vw; max-width:1200px; max-height:1200px; background:radial-gradient(circle, rgba(157,77,255,.22) 0%, transparent 62%); top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none;}
+  .hero-glow{position:absolute; width:120vw; height:120vw; max-width:1200px; max-height:1200px; background:radial-gradient(circle, rgba(157,77,255,.22) 0%, transparent 62%); top:50%; left:50%; transform:translate(-50%,-50%); filter:blur(8px);}
   .hero-eyebrow{margin-bottom:1.6rem; opacity:0; animation:fadeUp .9s var(--ease) .3s forwards;}
   .wordmark{font-size:clamp(3.2rem, 13vw, 9.5rem); display:flex; justify-content:center; will-change:letter-spacing;}
   .wordmark span{display:inline-block; transition:transform .1s linear;}
@@ -62,7 +62,7 @@
   .hero-links a:hover{border-color:var(--signal); color:var(--signal);}
   .hero-links a.primary{background:var(--signal); border-color:var(--signal); color:var(--ink);}
   .hero-links a.primary:hover{background:transparent; color:var(--signal);}
-  .scroll-cue{position:absolute; bottom:2.2rem; left:50%; transform:translateX(-50%); font-family:'Space Mono',monospace; font-size:.65rem; letter-spacing:.24em; text-transform:uppercase; color:var(--bone-dim); display:flex; flex-direction:column; align-items:center; gap:.6rem; opacity:0; animation:fadeUp .9s var(--ease) .9s forwards;}
+  .scroll-cue{position:absolute; bottom:2.2rem; left:50%; transform:translateX(-50%); font-family:'Space Mono',monospace; font-size:.65rem; letter-spacing:.24em; text-transform:uppercase; color:var(--bone-dim); display:flex; flex-direction:column; align-items:center; gap:.6rem;}
   .scroll-cue::after{content:''; width:1px; height:34px; background:var(--bone-dim); animation:pulse-line 1.8s ease-in-out infinite;}
   @keyframes pulse-line{0%,100%{transform:scaleY(1);opacity:.4;}50%{transform:scaleY(.5);opacity:1;}}
   @keyframes fadeUp{from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:translateY(0);}}
@@ -70,7 +70,7 @@
   /* ---------- skills ticker ---------- */
   .ticker-strip{border-top:1px solid var(--wire); border-bottom:1px solid var(--wire); padding:1rem 0; overflow:hidden; white-space:nowrap;}
   .ticker-track{display:inline-flex; animation:ticker 30s linear infinite;}
-  .ticker-track span{font-family:'Space Mono',monospace; font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; padding:0 1.6rem; color:var(--bone-dim); display:inline-flex; align-items:center; gap:1.6rem;}
+  .ticker-track span{font-family:'Space Mono',monospace; font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; padding:0 1.6rem; color:var(--bone-dim); display:inline-flex; align-items:center; gap:1rem;}
   .ticker-track span::after{content:'◆'; color:var(--signal); font-size:.6rem;}
   @keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
@@ -142,7 +142,7 @@
   .contact{text-align:center; border-top:1px solid var(--wire); border-bottom:1px solid var(--wire);}
   .contact h2{font-size:clamp(2rem,6vw,3.6rem); max-width:18ch; margin:0 auto 2.2rem;}
   .contact-links{display:flex; justify-content:center; flex-wrap:wrap; gap:1rem;}
-  .contact-links a{font-family:'Space Mono',monospace; font-size:.75rem; letter-spacing:.12em; text-transform:uppercase; color:var(--bone); border:1px solid var(--wire); padding:.8rem 1.4rem; text-decoration:none; transition:.3s var(--ease);}
+  .contact-links a{font-family:'Space Mono',monospace; font-size:.75rem; letter-spacing:.12em; text-transform:uppercase; color:var(--bone); border:1px solid var(--wire); padding:.8rem 1.4rem; text-decoration:none; transition:.3s var(--ease);} 
   .contact-links a:hover{border-color:var(--signal); color:var(--signal);}
   .contact-links a.primary{background:var(--signal); border-color:var(--signal); color:var(--ink);}
   .contact-links a.primary:hover{background:transparent; color:var(--signal);}
@@ -286,11 +286,12 @@
 
   // ---------- projects ----------
   const projects = [
-    {idx:'01', glyph:'P', title:'Universal Shop POS', desc:'A full point-of-sale system for retail — inventory, billing, and multi-user roles.', stack:'.NET 8 · Blazor · SQL Server'},
-    {idx:'02', glyph:'J', title:'JWT Auth REST API', desc:'A secure authentication API with role-based access control, built as a reusable backend module.', stack:'Node.js · Express · MongoDB'},
-    {idx:'03', glyph:'H', title:'Hotel Management System', desc:'Booking, room inventory, and staff management in one system for small hotel operations.', stack:'.NET · React · SQL Server'},
-    {idx:'04', glyph:'C', title:'CI/CD Pipeline DevOps Lab', desc:'An automated build-test-deploy pipeline demonstrating containerized delivery workflows.', stack:'Docker · Jenkins · AWS EC2'},
-    {idx:'05', glyph:'R', title:'Restaurant Website', desc:'A full ordering and menu-management website built for a restaurant client.', stack:'React · Node.js · MongoDB'}
+    {idx:'01', glyph:'M', title:'MultiTenant LMS', desc:'A multi-tenant learning management system supporting separate organizations, role-based portals, and scalable tenant-specific workflows.', stack:'Full-Stack · Multi-Tenant Architecture'},
+    {idx:'02', glyph:'A', title:'Assignment Organizer', desc:'A productivity-focused organizer to track assignments, deadlines, and priorities for students with a clean, task-centric workflow.', stack:'Web App · Productivity · Task Management'},
+    {idx:'03', glyph:'R', title:'ResumeBuilder', desc:'A resume creation platform that helps users generate polished resumes quickly with structured templates and editable sections.', stack:'Frontend · Forms · Document Generation'},
+    {idx:'04', glyph:'P', title:'Pnuemonia and HeartDisease Detection', desc:'A machine learning project for medical risk screening, focused on detecting pneumonia and heart disease indicators from health-related data.', stack:'Python · Machine Learning · Healthcare AI'},
+    {idx:'05', glyph:'S', title:'Sales Forcasting Dashboard', desc:'An analytics dashboard for sales trend monitoring and forecasting, designed to support better planning and data-informed business decisions.', stack:'Data Visualization · Forecasting · BI'},
+    {idx:'06', glyph:'P', title:'SmartPOS', desc:'A smart point-of-sale system for handling products, transactions, and operational flow with a modern interface for retail use cases.', stack:'POS · Inventory · Billing'}
   ];
   document.getElementById('railTrack').innerHTML = projects.map(p => `
     <div class="rail-card">
